@@ -70,3 +70,9 @@ execute(M, put(Idx), M) :-
   nth0(Idx, M, X),
   write(X),
   nl.
+
+execute_program(M, [], M).
+
+execute_program(M, [H|T], O) :-
+  execute(M, H, O2),
+  execute_program(O2, T, O).
