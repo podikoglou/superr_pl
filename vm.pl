@@ -58,7 +58,7 @@ execute(M, sub(IdxA, IdxB), O) :-
   nth0(IdxA, M, A),
   nth0(IdxB, M, B),
 
-  Diff is A + B,
+  Diff is A - B,
 
   append(BeforeA, [_|AfterA], M),
   length(BeforeA, IdxA),
