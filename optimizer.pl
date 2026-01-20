@@ -33,4 +33,12 @@ synthesize_from_program(IM, P, O) :-
 % TL: target length (amount of instruction)
 % O:  output program
 synthesize(IM, TM, TL, O) :-
-  true.
+  % TODO: this doesn't work very well because it doesn't ensure instructions run
+  % fine (it can generate instructions that deal with memory locations that are
+  % out of bounds)
+  length(O, TL),
+  maplist(instruction, O),
+
+  % run program and ensure the output memory is the same as the target memory
+  % (if not, backtrack and generate another program)
+  execute_program(IM, O, TM).
